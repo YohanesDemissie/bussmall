@@ -10,6 +10,7 @@ for(var i = 0; i < 21; i++){
   img[i] = new Image ();
   img[i].src = 'img' + productNames[i] + '.jpg'; }
 
+
 function Product(name, path) {
   this.productNames = name;
   this.path = path;
@@ -21,7 +22,7 @@ console.log('product and path', product);
 
 var productRank = {
   // TODO: All the properties of the object! What do you think you need? Try to write one piece at a time and make sure it does what you want before writing a little more.
-  
+
   // NOTE: A-C-P reminder... Make very intentional and iterative changes to your code, and then A-C-P.
   getRandomIndex: function() {
       var randomImages = [];
@@ -41,9 +42,10 @@ var productRank = {
     var num = Math.floor(Math.random());
      document.getElementById (Array [num]);
     // TODO: Hmm... what's going to happen here?
-
+var getNum = document.getElementById('num');
+  getNum.textContent = num;
   },
-
+updateMessage()l; //I used the above variable getNum and code from example from page 89 in javascript book
   tallyClicks: function(elementId) {
     // TODO: Hmm... what's going to happen here?
     totalClicks++;
