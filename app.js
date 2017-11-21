@@ -2,14 +2,14 @@
 
 var totalClicks = 0;
 var allProducts = [];
-var productNames = [' bag',' banana', ' bathroom' ,' breakfast', ' boots', ' bubblegum', ' chair', 'cthulhu', ' dog-duck', 'dragon' ' pen', 'pet-sweep',' scissors', 'shark', 'sweep', 'tauntaun','unicorn', 'usb', 'water-can', 'wine-glass',
+var productNames = [' bag',' banana', ' bathroom' ,' breakfast', ' boots', ' bubblegum', ' chair', 'cthulhu', ' dog-duck', 'dragon', ' pen', 'pet-sweep',' scissors', 'shark', 'sweep', 'tauntaun','unicorn', 'usb', 'water-can', 'wine-glass',
 ];
 // TODO: see the pattern here, and what you need to fill in?
 var img = new Array(21);
 for(var i = 0; i < 21; i++){
   img[i] = new Image ();
   img[i].src = 'img' + productNames[i] + '.jpg'; }
-
+console.log('product names and array', productNames);
 
 function Product(name, path) {
   this.productNames = name;
