@@ -1,111 +1,65 @@
 'use strict';
 
 var totalClicks = 0;
-var allProducts = [];
+var allProducts = []; //an empty array for me to push value to
 var productNames = [' bag',' banana', ' bathroom' ,' breakfast', ' boots', ' bubblegum', ' chair', 'cthulhu', ' dog-duck', 'dragon', ' pen', 'pet-sweep',' scissors', 'shark', 'sweep', 'tauntaun','unicorn', 'usb', 'water-can', 'wine-glass',
 ];
-// TODO: see the pattern here, and what you need to fill in?
-var img = new Array(21);
-for(var i = 0; i < 21; i++){
-  img[i] = new Image ();
-  img[i].src = 'img' + productNames[i] + '.jpg'; }
-console.log('product names and array', productNames);
 
-function Product(name, path) {
-  this.productNames = name;
-  this.path = path;
+// var img = new Array(21);
+// for(var i = 0; i < 21; i++){
+//   img[i] = new Image ();
+//   img[i].src = 'img' + productNames[i] + '.jpg'; }
+// console.log('product names and array', productNames);
+
+function Product(name, path) { //
+  this.name = name;
+  this.path = 'assets/' + this.name;
+  this.votes = 0;
+  allProducts.push(this);
+  console.log('product and path', Product);
+  //this.timesShown = 0 makes sure every imiage is displaed atleast onee before repeats
   // TODO: Build your constructor and necessary properties.
 }
-console.log('product and path', product);
+// below is an anonymous function wrapepd in perentheses. immiediatelu after we called this function. This stops 'i' in the global array from being used anywehre else. So it almost makes the array  a non global variable.//
+(function () {
+  for (var i in productNames) {
+    if 
+    new Product(productNames[i]);
+  }
+})();
 
-// TODO: Don't forget to build your objects. How can you do this withough having to write 14 lines of `new Product(., ., .)`?
+var tracker = {
+  imagesEl: document.getElementById('images'),
+  resultsEl: document.getElementById('results'),
 
-var productRank = {
-  // TODO: All the properties of the object! What do you think you need? Try to write one piece at a time and make sure it does what you want before writing a little more.
+  imageOne: document.createElement('img'),
+  imageTwo: document.createElement('img'),
+  imageThree: new Image(),
 
-  // NOTE: A-C-P reminder... Make very intentional and iterative changes to your code, and then A-C-P.
-  getRandomIndex: function() {
-      var randomImages = [];
-      var temp = arr.slice();
-      for (var i = 0; i<count; i++){
-        var index = Math.ceil(Math.random() * 10) % _tmp.length;
-        result.push(_tmp.splice(index, 1)[0]);
-      }
-      return result;
+  getRandomIndex: function () {
+    return math.floor(math.random() * allPRoducts.length);
+  },
 
+  displayImages: function () {
+    this.imageOne.src = allProducts[this.getRandomIndex()].path //this gets inex from all products random;ly within the path value
+    //this.imageone.src is an attribute created into an element for...\
+    this.imageTwo.src = allProducts[this.getRandomIndex()].path
+    this.imageThree.src = allProducts[this.getRandomIndex()].path
+
+    if (this.imageOne.src === this.imageTwo.src || this.imageOne.src === this.imageThree.src || this.imageTwo === this.imageThree) {
+      this.displayImages(); //this makes sure that the same picture isnt called at the same time
+    }
+
+    this.imagesEl.appendChild(this.imageOne); // when using 'this' we/re calling the trcker.images
+    this.imagesEl.appendChild(this.imageTwo);
+    this.imagesEl.appendChild(this.imageThree);
+  },
+  onClick: function (event) {
+    if(event.target.id=== 'images') return;
+    tracker.clickCount++;
+    tracker.displayImages();
     },
+  };
 
-    // TODO: Hmm... what's going to happen here?
-  },
-
-  displayImages: function() {
-    var num = Math.floor(Math.random());
-     document.getElementById (Array [num]);
-    // TODO: Hmm... what's going to happen here?//
-var getNum = document.getElementById('num');
-  getNum.textContent = num;
-  },
-updateMessage();
- //I used the above variable getNum and code from example from page 89 in javascript book
-  tallyClicks: function(elementId) {
-    // TODO: Hmm... what's going to happen here?
-    totalClicks++;
-    window.document.ButtonForm.myButton.value='Clicked' + totalClicks + 'times';
-  },
-
-  displayResults: function() {
-    // TODO: Hmm... what's going to happen here?
-    prototype.randomImages ();
-  },
-
-  showButton: function() {
-    // TODO: Hmm... what's going to happen here?
-document.
-  },
-
-  onClick: function() {
-    // TODO: Hmm... what's going to happen here?
-};
-
-productRank.imageEls.addEventListener('click', productRank.onClick);
-productRank.displayImages();
-
-//use strict
-// 'use strict';
-// var stores = [];
-//
-// var hours = ['6:00 AM', '7:00 AM', '8:00 AM', '9:00 AM', '10:00 AM','11:00 AM','12:00 PM','1:00 PM','2:00 PM','3:00 PM','4:00 PM','5:00 PM','6:00 PM','7:00 PM','8:00 PM','Total'];
-//
-// function Store (id, min, max, avg){
-//   this.id = id;
-//   this.min = min;
-//   this.max = max;
-//   this.avg = avg;
-//   this.hourlyCookies = [];
-//   this.dailyTotal = 0;
-//   stores.push(this);
-//   this.getHourlyCookies();
-// }
-// console.log(Store);
-//
-// Store.prototype.randomCust = function () {
-//   return getRandomNum(this.min, this.max);
-// };
-//
-// Store.prototype.getHourlyCookies = function() {
-//   for(var i = 0 ; i < hours.length; i++) {
-//     this.hourlyCookies.push(Math.floor(this.randomCust() * this.avg));
-//     this.dailyTotal += this.hourlyCookies[i];
-//   }
-//   return this.getHourlyCookies;
-// };
-//
-// new Store ('1st and Pike', 23, 65, 6.3);
-// new Store ('SeaTac Airport', 3, 24, 1.2);
-// new Store ('Seattle Center', 11, 38, 3.7);
-// new Store ('Capitol Hill', 20, 38, 2.3);
-// new Store ('Alki', 2, 26, 1.2);
-//
-// function getRandomNum(min, max) {
-//   return Math.round(Math.random() * (max - min) + min);
-// }
+// tracker.imagesEl.addEventListener('click', tracker.onClick); // adds a click tracker to track how many clicks per image
+// tracker.displayImages();
