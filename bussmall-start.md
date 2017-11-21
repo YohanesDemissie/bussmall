@@ -1,4 +1,5 @@
 #User Stories
+
 #As a Developer
 As a developer, I want to use an event handlers in an object method to allow the user to click on the image and return that data into a counter so I can tally each click.
 As a developer, I want to use an even listener within an object method to count how many clicks an image gets.
@@ -15,4 +16,3 @@ As a business owner, I want to know which products I should discontinue so i can
 As a user, I want to see clear pictures of products so I can make accurate selections
 As a user, I want to a visual experience so I can enjoy the experience of taking the survey
 As a user, I want to see cations on the pictures and headers and concrete context so I have an idea and solid representation of what is in front of me.
- 
