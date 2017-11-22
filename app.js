@@ -2,7 +2,7 @@
 
 //var totalClicks = 0;
 var allProducts = []; //an empty array for me to push value to
-var productNames = ['bag', 'banana', 'bathroom', 'breakfast', 'boots', 'bubblegum', 'chair', 'cthulhu', 'dogduck', 'dragon', 'pen', 'petsweep', 'scissors', 'shark', 'sweep', 'tauntaun','unicorn', 'usb', 'watercan', 'wineglass',
+var productNames = ['bag', 'banana', 'bathroom', 'breakfast', 'boots', 'bubblegum', 'chair', 'cthulhu', 'dogduck', 'dragon', 'pen', 'petsweep', 'scissors', 'shark', 'sweepers', 'tauntaun','unicorn', 'usb', 'watercan', 'wineglass',
 ];
 
 function Product(name) {
@@ -65,10 +65,46 @@ var tracker = {
   onClick: function (event) {
     console.log(event.target.id);
     if (tracker.clickCount === 24) {
-      var resultButton = document.createElement('button');
-      tracker.imagesEl.appendChild(resultButton);
       tracker.imagesEl.removeEventListener('click', tracker.onClick);
-
+      var ctx = document.getElementById('myChart').getContext('2d');
+      var options = {
+        type: 'bar',
+        data: {
+          labels:  allProducts.map(function(x) {return x.name;}),
+          datasets: [{
+            label: '# of Votes',
+            data: allProducts.map(function(x) {return x.votes;}),
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(255, 206, 86, 0.2)',
+              'rgba(75, 192, 192, 0.2)',
+              'rgba(153, 102, 255, 0.2)',
+              'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+              'rgba(255,99,132,1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)',
+              'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero:true
+              }
+            }]
+          }
+        }
+      };
+      var myChart = new Chart(ctx, options);
+      console.log('my graph', myChart);
     }
     else if (event.target.id === 'images'){
       console.log('didnt click an image');
