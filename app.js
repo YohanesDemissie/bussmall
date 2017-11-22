@@ -1,65 +1,107 @@
 'use strict';
 
-var totalClicks = 0;
+//var totalClicks = 0;
 var allProducts = []; //an empty array for me to push value to
-var productNames = [' bag',' banana', ' bathroom' ,' breakfast', ' boots', ' bubblegum', ' chair', 'cthulhu', ' dog-duck', 'dragon', ' pen', 'pet-sweep',' scissors', 'shark', 'sweep', 'tauntaun','unicorn', 'usb', 'water-can', 'wine-glass',
+var productNames = ['bag', 'banana', 'bathroom', 'breakfast', 'boots', 'bubblegum', 'chair', 'cthulhu', 'dogduck', 'dragon', 'pen', 'petsweep', 'scissors', 'shark', 'sweep', 'tauntaun','unicorn', 'usb', 'watercan', 'wineglass',
 ];
 
-// var img = new Array(21);
-// for(var i = 0; i < 21; i++){
-//   img[i] = new Image ();
-//   img[i].src = 'img' + productNames[i] + '.jpg'; }
-// console.log('product names and array', productNames);
-
-function Product(name, path) { //
+function Product(name) {
   this.name = name;
-  this.path = 'assets/' + this.name;
+  this.path = 'assets/' + this.name + '.jpg';
+  //adds jpg to prduct name to pull its image
   this.votes = 0;
   allProducts.push(this);
   console.log('product and path', Product);
-  //this.timesShown = 0 makes sure every imiage is displaed atleast onee before repeats
-  // TODO: Build your constructor and necessary properties.
+  this.timesShown = 0;// makes sure every imiage is displaed atleast onee before repeats
+  // Build your constructor and necessary properties.
 }
 // below is an anonymous function wrapepd in perentheses. immiediatelu after we called this function. This stops 'i' in the global array from being used anywehre else. So it almost makes the array  a non global variable.//
 (function () {
   for (var i in productNames) {
-    if 
     new Product(productNames[i]);
   }
 })();
 
+
 var tracker = {
   imagesEl: document.getElementById('images'),
   resultsEl: document.getElementById('results'),
+  clickCount: 0,
+
+  //the tracker keeps tabs of how many times the image element is clicked
 
   imageOne: document.createElement('img'),
   imageTwo: document.createElement('img'),
-  imageThree: new Image(),
+  imageThree: document.createElement('img'),
 
   getRandomIndex: function () {
-    return math.floor(math.random() * allPRoducts.length);
+    return Math.floor(Math.random() * allProducts.length);
   },
 
   displayImages: function () {
-    this.imageOne.src = allProducts[this.getRandomIndex()].path //this gets inex from all products random;ly within the path value
-    //this.imageone.src is an attribute created into an element for...\
-    this.imageTwo.src = allProducts[this.getRandomIndex()].path
-    this.imageThree.src = allProducts[this.getRandomIndex()].path
-
-    if (this.imageOne.src === this.imageTwo.src || this.imageOne.src === this.imageThree.src || this.imageTwo === this.imageThree) {
-      this.displayImages(); //this makes sure that the same picture isnt called at the same time
+    var idOne = this.getRandomIndex();
+    var idTwo = this.getRandomIndex();
+    var idThree = this.getRandomIndex();
+    // the above code changes the elment ID's to pull random images from the array above so there are minimal repeats
+    if (idOne === idTwo || idOne === idThree || idTwo===idThree) {
+      this.displayImages ();
+      return;
+      //the above code makes sure the three images we will be displahing are NEVER the same
     }
+    // my code below vs Scotts code above
+
+    this.imageOne.src = allProducts[idOne].path;
+    this.imageTwo.src = allProducts[idTwo].path;
+    this.imageThree.src = allProducts[idThree].path; //this gets inex from all products randomly within the path value
+    //this.imageone.src is an attribute created into an element for...\
+    this.imageOne.id = allProducts[idOne].name;
+    this.imageTwo.id = allProducts[idTwo].name;
+    this.imageThree.id = allProducts[idThree].name;
 
     this.imagesEl.appendChild(this.imageOne); // when using 'this' we/re calling the trcker.images
     this.imagesEl.appendChild(this.imageTwo);
     this.imagesEl.appendChild(this.imageThree);
   },
   onClick: function (event) {
-    if(event.target.id=== 'images') return;
-    tracker.clickCount++;
+    console.log(event.target.id);
+    if (tracker.clickCount === 24) {
+      var resultButton = document.createElement('button');
+      tracker.imagesEl.appendChild(resultButton);
+      tracker.imagesEl.removeEventListener('click', tracker.onClick);
+
+    }
+    else if (event.target.id === 'images'){
+      console.log('didnt click an image');
+      return;
+    } else {
+      tracker.clickCount++;
+    }
+
+    for (var i in allProducts) {
+      if (event.target.id === allProducts[i].name) {
+        allProducts[i].votes++;
+      }
+    }
     tracker.displayImages();
-    },
-  };
+  }
+  // onClick: function (event) {
+  //   if(event.target.id === 'images') {
+  //     return;
+  //   } else {
+  //     tracker.clickCount++;
+  //
+  //     for (var i in allProducts) {
+  //       if(event.target.id === allProducts[i].name) {
+  //         allProducts[i].votes++;
+  //       }
+  //     }
+  //     tracker.displayImages();
+  //   }
+
+};
+tracker.imagesEl.addEventListener('click', tracker.onClick);
+tracker.displayImages();
+
 
 // tracker.imagesEl.addEventListener('click', tracker.onClick); // adds a click tracker to track how many clicks per image
 // tracker.displayImages();
