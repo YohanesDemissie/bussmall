@@ -68,6 +68,8 @@ var tracker = {
       tracker.imagesEl.removeEventListener('click', tracker.onClick);
       // below trying to push all products output into local storage//
       // localStorage.setItem('allProducts');
+      allProducts.push(JSON.parse(localStorage.getItem('allProducts')));
+      //code works with just the code below. can explore or delete code above
       localStorage.setItem('allProducts', JSON.stringify(allProducts));
 
       var ctx = document.getElementById('myChart').getContext('2d');
