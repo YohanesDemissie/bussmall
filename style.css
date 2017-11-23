@@ -3,3 +3,7 @@ h1{
 font-style: bold;
 font-family: cursive;
 }
+
+#chart {
+  max-width: 100px;
+}
