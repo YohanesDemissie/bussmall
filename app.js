@@ -77,7 +77,7 @@ var tracker = {
       var options = {
         type: 'bar',
         data: {
-          labels:  allProducts.map(function(x) {return x.name;}),
+          labels: allProducts.map(function(x) {return x.name;}),
           datasets: [{
             label: '# of Votes',
             data: allProducts.map(function(x) {return x.votes;}),
