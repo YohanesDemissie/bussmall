@@ -2,7 +2,7 @@
 
 //var totalClicks = 0;
 var allProducts = []; //an empty array for me to push value to
-var productNames = ['bag', 'banana', 'bathroom', 'breakfast', 'boots', 'bubblegum', 'chair', 'cthulhu', 'dogduck', 'dragon', 'pen', 'petsweep', 'scissors', 'shark', 'sweepers', 'tauntaun','unicorn', 'usb', 'watercan', 'wineglass',
+var productNames = ['bag', 'banana', 'bathroom', 'breakfast', 'boots', 'bubblegum', 'chair', 'cthulhu', 'dogduck', 'dragon', 'pen', 'petsweep', 'scissors', 'shark', 'sweep', 'tauntaun','unicorn', 'usb', 'watercan', 'wineglass',
 ];
 
 function Product(name) {
