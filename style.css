@@ -1,9 +1,15 @@
+html{
+  background-color: rgb(43, 96, 181);
+}
 h1{
+  color: white;
   font-size: 80px;
 font-style: bold;
 font-family: cursive;
 }
 
-#chart {
-  max-width: 100px;
+p{
+  color: white;
+  font-size: 30px;
+  text-align: center;
 }
