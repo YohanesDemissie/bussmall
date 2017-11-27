@@ -67,11 +67,10 @@ var tracker = {
     if (tracker.clickCount === 24) {
       tracker.imagesEl.removeEventListener('click', tracker.onClick);
       // below trying to push all products output into local storage//
-      // localStorage.setItem('allProducts');
-      allProducts.push(JSON.parse(localStorage.getItem('allProducts')));
+      // localStorage.setItem('allProducts')
       //code works with just the code below. can explore or delete code above
       localStorage.setItem('allProducts', JSON.stringify(allProducts));
-
+      allProducts.push(JSON.parse(localStorage.getItem('allProducts')));
       var ctx = document.getElementById('myChart').getContext('2d');
       //below is the graph code
       var options = {
