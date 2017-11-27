@@ -16,12 +16,6 @@
     "no-undefined": "off",
     "indent": ["error", 2],
     "quotes": ["warn", "single"],
-    "space-infix-ops": [
-      "error",
-      {
-        "int32Hint": false
-      }
-    ],
     "no-multi-spaces": [
       "warn",
       {
